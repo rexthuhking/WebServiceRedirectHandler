@@ -13,4 +13,10 @@ In the first location http://localhost/SampleWebService/SampleService.asmx modif
       <httpRedirect enabled="true" destination="http://localhost/Sample/SampleService.asmx" exactDestination="true" httpResponseStatus="Temporary" />
     </system.webServer>
 
-Once this is done, go ahead and open up the SampleServiceClient console application and step through the code to see how the 302 redirect is handled by the code with the SoapHttpClientProtocolWithRedirect class.
+Once this is done, go ahead and open up the SampleServiceClient console application and step through the code to see how the 307 temporary redirect is handled by the code with the SoapHttpClientProtocolWithRedirect class.
+
+If you want to play around with the different types of redirects, especially to replicate the error that clients receive when a WCF Service call receives a 302 found response then use the following section within the <configuration> node of your web.config file.
+
+	<system.webServer>
+      <httpRedirect enabled="true" destination="http://localhost/Sample/SampleService.asmx" exactDestination="true" httpResponseStatus="Found" />
+    </system.webServer>
